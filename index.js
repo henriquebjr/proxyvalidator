@@ -2,12 +2,14 @@
 
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
-app.use(express.bodyParser());
+app.use(bodyParser.json());
 
 app.post('', function(request, response) {
   console.log("### POST ###");
-  console.log(request.body);
+  const body = request.body;
+  console.log("### BODY ### %s", JSON.stringify(body));
 });
 
 var server = app.listen(3001, function() {
