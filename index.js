@@ -11,7 +11,7 @@ app.post('', function(request, response) {
   console.log("### POST ###");
   const body = request.body;
   console.log("### BODY ### %s", JSON.stringify(body));
-  res.end(JSON.stringify(body));
+  response.end(JSON.stringify(body));
 });
 
 var server = app.listen(port, function() {
