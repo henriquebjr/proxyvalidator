@@ -9,9 +9,7 @@ app.use(bodyParser.json());
 
 app.post('', function(request, response) {
   response.writeHead(200, { 'Content-Type': 'application/json' });
-  console.log("### POST ###");
   const body = request.body;
-  console.log("### BODY ### %s", JSON.stringify(body));
   response.end(JSON.stringify(body));
 });
 
