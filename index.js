@@ -4,7 +4,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3001;
-var Http = require('http');
+var http = require('http');
 
 app.use(bodyParser.json());
 
@@ -18,15 +18,18 @@ var server = app.listen(port, function() {
   console.log("Server it's up and running at http://localhost:" + port);
 })
 
-var proxied = Http.request({
-  host: '121.8.98.202',
-  port: 8080,
+var proxied = http.get({
+  host: '122.224.227.202',
+  port: 3128,
   method: 'GET',
-  path: 'http://www.estrela.com.br//'
+  path: 'http://xxxx.org/'
 }, function(response){
+  console.log("###");
   response.on('data', function(data){
     console.log(data.toString());
   });
-});
+}).on("error", (err) => {
+  console.log("Error: " + err.message);
+});;
 
 proxied.end();
